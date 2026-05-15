@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ - IDS Inohana Dance Studio</title>
+  <meta name="description" content="IDSへのお問い合わせ。電話・メール・LINE公式アカウントにてお気軽にご連絡ください。">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-methods { }
+
+    .contact-method {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: border-color 0.2s;
+    }
+
+    .contact-method:hover { border-color: rgba(102,126,234,0.4); }
+
+    .contact-method .icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-method h3 {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .contact-method .value {
+      font-size: 1.1rem;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .contact-method p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .contact-method a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .contact-method a:hover { color: var(--primary); }
+
+    /* SNS */
+    .sns-row {
+      display: flex;
+      gap: 16px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .sns-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .sns-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* map + info */
+    .location-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .location-card iframe {
+      display: block;
+      width: 100%;
+      height: 260px;
+      border: none;
+    }
+
+    .location-info {
+      padding: 24px 28px;
+    }
+
+    .location-info h3 {
+      font-size: 0.8rem;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .location-info p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 2;
+    }
+
+    .location-info strong { color: var(--white); }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+
+    .faq-q {
+      font-size: 0.9rem;
+      color: var(--white);
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.2rem;
+      color: var(--primary);
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-q::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      display: none;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      padding-top: 14px;
+    }
+
+    .faq-item.open .faq-a { display: block; }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">IDS</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">トップ</a></li>
+    <li><a href="studio.html">スタジオ設備</a></li>
+    <li><a href="pricing.html">料金＆予約</a></li>
+    <li><a href="member.html">メンバー用</a></li>
+    <li><a href="contact.html" class="active">お問い合わせ</a></li>
+    <li><a href="https://motohirosano.github.io/ids-booking/" class="nav-cta" target="_blank">今すぐ予約</a></li>
+  </ul>
+  <div class="nav-toggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">CONTACT</div>
+  <h1 class="section-title">お問い合わせ</h1>
+  <p class="section-desc">定期利用・イベント貸切・その他ご質問は、お気軽にご連絡ください。</p>
+</div>
+
+<section>
+  <div class="contact-grid">
+    <!-- 連絡先 -->
+    <div class="contact-methods">
+      <div class="contact-method">
+        <div class="icon">📞</div>
+        <div>
+          <h3>電話</h3>
+          <div class="value"><a href="tel:08082852342">080-8285-2342</a></div>
+          <p>お気軽にご連絡ください</p>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="icon">✉️</div>
+        <div>
+          <h3>メール</h3>
+          <div class="value"><a href="mailto:inohanadancestudio@gmail.com">inohanadancestudio@gmail.com</a></div>
+          <p>領収書発行依頼もこちらへ</p>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="icon">💬</div>
+        <div>
+          <h3>LINE公式アカウント</h3>
+          <div class="value">@761kdklp</div>
+          <p>お問い合わせ・メンバー申請はLINEが便利です</p>
+          <div class="sns-row" style="margin-top: 12px;">
+            <a href="https://lin.ee/RHJMw89" class="sns-btn" target="_blank">LINE 友だち追加</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-method">
+        <div class="icon">📱</div>
+        <div>
+          <h3>SNS</h3>
+          <div class="sns-row" style="margin-top: 8px;">
+            <a href="https://www.instagram.com/inohanadancestudio/" class="sns-btn" target="_blank">Instagram</a>
+            <a href="https://www.youtube.com/@IDC-eventmovie/videos" class="sns-btn" target="_blank">YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 8px; padding: 16px 0;">
+        <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.8;">
+          適格請求書発行登録番号: T4810523052052<br>
+          領収書の発行はメールにてお申し付けください。
+        </p>
+      </div>
+    </div>
+
+    <!-- 地図 -->
+    <div>
+      <div class="location-card">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810!2d140.12118!3d35.60850!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60228d7c3c7b0001%3A0xabc!2sMF9%E3%83%93%E3%83%ABIDS!5e0!3m2!1sja!2sjp!4v1716700000000"
+          allowfullscreen loading="lazy">
+        </iframe>
+        <div class="location-info">
+          <h3>アクセス</h3>
+          <p>
+            〒260-0013<br>
+            千葉市中央区中央3-3-9 MF9ビル B1<br><br>
+            <strong>電車</strong><br>
+            千葉中央駅（京成）から徒歩 約5分<br>
+            千葉駅から徒歩 約13分<br><br>
+            <strong>バス</strong><br>
+            中央2丁目バス停からすぐ
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div style="margin-top: 72px;">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title" style="margin-bottom: 32px;">よくあるご質問</h2>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">会員登録は必要ですか？</div>
+      <div class="faq-a">一般利用（レンタル・貸切）は会員登録不要でご利用いただけます。個人利用（シェア）やメンバー料金を希望の方は、メンバーパスワードが必要です。お問い合わせください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">支払い方法は？</div>
+      <div class="faq-a">クレジットカード（VISA / Mastercard / JCB / AMEX）またはPayPayでのオンライン決済となります。予約確認メール記載の決済ページからお支払いください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">キャンセルはできますか？</div>
+      <div class="faq-a">原則、支払い完了後のキャンセルは受け付けておりません。ご予約の際はご注意ください。支払い前のキャンセルは予約確認メール記載のキャンセルURLからお手続きいただけます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">入室方法を教えてください。</div>
+      <div class="faq-a">決済完了後に送付されるメールに時間限定の暗証番号が記載されています。ご利用時間になりましたら暗証番号を入力してご入室ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">定期利用・長期契約はできますか？</div>
+      <div class="faq-a">定期利用についてはご相談承っております。お電話またはLINEにてお気軽にお問い合わせください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">領収書は発行してもらえますか？</div>
+      <div class="faq-a">領収書の発行は可能です（適格請求書登録番号: T4810523052052）。inohanadancestudio@gmail.com までメールにてご依頼ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">DJ機器・マイクは借りられますか？</div>
+      <div class="faq-a">DJ機器やマイクのレンタルは要事前相談となります。ご利用希望の際はお問い合わせください。</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">IDS</div>
+        <div class="footer-tagline">Inohana Dance Studio</div>
+        <div class="footer-contact">
+          <p>
+            〒260-0013 千葉市中央区中央3-3-9 MF9ビル B1<br>
+            TEL: 080-8285-2342<br>
+            Email: inohanadancestudio@gmail.com
+          </p>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/inohanadancestudio/" target="_blank">IG</a>
+          <a href="https://www.youtube.com/@IDC-eventmovie/videos" target="_blank">YT</a>
+          <a href="https://lin.ee/RHJMw89" target="_blank">LN</a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="studio.html">スタジオ設備</a></li>
+          <li><a href="pricing.html">料金＆予約</a></li>
+          <li><a href="member.html">メンバー用</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>BOOKING</h4>
+        <ul>
+          <li><a href="https://motohirosano.github.io/ids-booking/" target="_blank">予約カレンダー</a></li>
+          <li><a href="pricing.html">料金表</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Inohana Dance Studio. All rights reserved.</p>
+      <p>適格請求書登録番号: T4810523052052</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  function toggleFaq(el) {
+    el.parentElement.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDS - Inohana Dance Studio | 千葉市中央区</title>
+  <meta name="description" content="千葉市中央区のダンス・多目的スタジオ。会員登録不要、24時間利用可能。2つのスタジオとステージを完備。">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---- TOP PAGE 専用 ---- */
+    .uses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .use-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .use-card:hover {
+      border-color: rgba(102,126,234,0.5);
+      transform: translateY(-3px);
+    }
+
+    .use-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .use-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .use-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* features strip */
+    .features-strip {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .features-strip-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .feature-item .num {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 600;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .feature-item p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* access */
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .access-info { }
+
+    .access-info h3 {
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .access-info p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+    }
+
+    .map-frame {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .map-frame iframe {
+      display: block;
+      width: 100%;
+      height: 300px;
+      border: none;
+      filter: grayscale(30%) invert(5%);
+    }
+
+    /* ---- terms ---- */
+    .terms-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+    }
+
+    .terms-box ol {
+      padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 2;
+    }
+
+    @media (max-width: 768px) {
+      .uses-grid { grid-template-columns: 1fr 1fr; }
+      .features-strip-inner { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
+      .access-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .uses-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav>
+  <a href="index.html" class="nav-logo">IDS</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html" class="active">トップ</a></li>
+    <li><a href="studio.html">スタジオ設備</a></li>
+    <li><a href="pricing.html">料金＆予約</a></li>
+    <li><a href="member.html">メンバー用</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="https://motohirosano.github.io/ids-booking/" class="nav-cta" target="_blank">今すぐ予約</a></li>
+  </ul>
+  <div class="nav-toggle" onclick="toggleNav()" id="navToggle">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">千葉市中央区 ／ 24時間営業</div>
+    <h1>INOHANA<br>DANCE STUDIO</h1>
+    <h2>スタジオ・ステージ完備の多目的スペース</h2>
+    <p>
+      会員登録不要ですぐにご利用いただけます。<br>
+      スタジオ2つとステージを併設、鏡・スピーカー設置済み。<br>
+      個人練習から本格イベントまで対応できます。
+    </p>
+    <div class="hero-buttons">
+      <a href="https://motohirosano.github.io/ids-booking/" class="btn btn-primary" target="_blank">予約カレンダーを見る</a>
+      <a href="studio.html" class="btn btn-outline">スタジオを詳しく見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- 特徴strip -->
+<div class="features-strip">
+  <div class="features-strip-inner">
+    <div class="feature-item">
+      <div class="num">2</div>
+      <p>スタジオ＋ステージ</p>
+    </div>
+    <div class="feature-item">
+      <div class="num">24H</div>
+      <p>営業時間</p>
+    </div>
+    <div class="feature-item">
+      <div class="num">0</div>
+      <p>会員登録不要</p>
+    </div>
+    <div class="feature-item">
+      <div class="num">5min</div>
+      <p>千葉中央駅から徒歩</p>
+    </div>
+  </div>
+</div>
+
+<!-- 使用例 -->
+<section>
+  <div class="section-label">USE CASES</div>
+  <h2 class="section-title">様々な用途でご利用いただけます</h2>
+  <p class="section-desc">
+    スタジオをつなげることで大人数でのパーティーにも対応。<br>
+    DJ機器・マイクのレンタルも可能です（要事前相談）。
+  </p>
+  <div class="uses-grid">
+    <div class="use-card">
+      <div class="use-icon">🕺</div>
+      <h3>ダンス練習</h3>
+      <p>個人・グループでのダンス、余興等の練習にご利用いただけます。</p>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">🧘</div>
+      <h3>レッスン・ワークショップ</h3>
+      <p>ダンス・ヨガ等のレッスン、定期教室としての利用もご相談ください。</p>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">🎉</div>
+      <h3>イベント・パーティー</h3>
+      <p>貸し切りでのイベント開催。音響・照明・ケータリングはご相談ください。</p>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">🎵</div>
+      <h3>音楽・撮影</h3>
+      <p>MV撮影・ライブ配信・音楽練習など、多様な表現活動に対応します。</p>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">💪</div>
+      <h3>フィットネス</h3>
+      <p>パーソナルトレーニングや格闘技練習など、運動全般にご利用いただけます。</p>
+    </div>
+    <div class="use-card">
+      <div class="use-icon">📋</div>
+      <h3>定期利用</h3>
+      <p>定期的なご利用もご相談承っております。お気軽にお問い合わせください。</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- アクセス -->
+<section>
+  <div class="section-label">ACCESS</div>
+  <h2 class="section-title">アクセス</h2>
+  <div class="access-grid">
+    <div class="access-info">
+      <h3>📍 住所</h3>
+      <p>
+        〒260-0013<br>
+        千葉市中央区中央3-3-9<br>
+        MF9ビル B1<br><br>
+        <strong style="color:var(--white)">電車</strong><br>
+        千葉中央駅（京成）から徒歩 約5分<br>
+        千葉駅から徒歩 約13分<br><br>
+        <strong style="color:var(--white)">バス</strong><br>
+        中央2丁目バス停からすぐ
+      </p>
+    </div>
+    <div class="map-frame">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d810!2d140.12118!3d35.60850!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60228d7c3c7b0001%3A0xabc!2sMF9%E3%83%93%E3%83%ABIDS!5e0!3m2!1sja!2sjp!4v1716700000000"
+        allowfullscreen loading="lazy">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- 利用規約 -->
+<section>
+  <div class="section-label">TERMS</div>
+  <h2 class="section-title">利用規約</h2>
+  <div class="terms-box">
+    <ol>
+      <li>ご利用に際しましては、本規約のすべてに同意・承諾をしたものとします。</li>
+      <li>本利用規約は、当スタジオ運営が予告無しで変更、追加、削除を行うことができるものとします。</li>
+      <li>以下の行為は禁止するものとし、禁止行為を行った場合は当スタジオの利用資格を剥奪されても異議を申し立てられないものとします。</li>
+      <li>禁止行為により当スタジオに損害が生じた場合、損害金額全額を請求できるものとします。</li>
+      <li>
+        以下の禁止行為の監視のためスタジオ利用の代表者をたてるものとします。<br>
+        (1) 他のお客様のご利用の妨げになる音量でのご利用<br>
+        (2) スタジオ内・地下共用部での喫煙<br>
+        (3) 持ち込んだゴミの放置<br>
+        (4) 器物破損（鏡・壁・その他備品など）<br>
+        (5) 他のお客様または当スタジオに損害を与える行為<br>
+        (6) 法律・条例等に反する行為<br>
+        (7) 当スタジオの運営を妨げる行為<br>
+        (8) 近隣住民・他の利用者から苦情の原因となりかねない行為<br>
+        (9) 18歳未満の深夜利用
+      </li>
+      <li>利用者同士のトラブルに関して、当スタジオは一切責任を負いません。</li>
+      <li>スタジオ内での犯罪行為については、警察への通報と個人情報の開示を行う場合があります。</li>
+    </ol>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">IDS</div>
+        <div class="footer-tagline">Inohana Dance Studio</div>
+        <div class="footer-contact">
+          <p>
+            〒260-0013 千葉市中央区中央3-3-9 MF9ビル B1<br>
+            TEL: 080-8285-2342<br>
+            Email: inohanadancestudio@gmail.com<br>
+            適格請求書登録番号: T4810523052052
+          </p>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/inohanadancestudio/" target="_blank" title="Instagram">IG</a>
+          <a href="https://www.youtube.com/@IDC-eventmovie/videos" target="_blank" title="YouTube">YT</a>
+          <a href="https://lin.ee/RHJMw89" target="_blank" title="LINE">LN</a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="studio.html">スタジオ設備</a></li>
+          <li><a href="pricing.html">料金＆予約</a></li>
+          <li><a href="member.html">メンバー用</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>BOOKING</h4>
+        <ul>
+          <li><a href="https://motohirosano.github.io/ids-booking/" target="_blank">予約カレンダー</a></li>
+          <li><a href="pricing.html">料金表</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Inohana Dance Studio. All rights reserved.</p>
+      <p>領収書発行はメールにてご連絡ください</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+</script>
+</body>
+</html>

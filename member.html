@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メンバー用 - IDS Inohana Dance Studio</title>
+  <meta name="description" content="IDSメンバー専用ページ。メンバー料金での予約、個人利用（シェア）の利用方法。">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .member-hero-note {
+      background: rgba(102,126,234,0.12);
+      border: 1px solid rgba(102,126,234,0.3);
+      border-radius: 12px;
+      padding: 20px 28px;
+      margin-bottom: 48px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .member-hero-note strong { color: var(--primary); }
+
+    .benefit-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+
+    .benefit-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.2s;
+    }
+
+    .benefit-card:hover { border-color: rgba(102,126,234,0.4); }
+
+    .benefit-card .icon { font-size: 2rem; margin-bottom: 14px; }
+
+    .benefit-card h3 {
+      font-size: 0.95rem;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* 比較表 */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 48px;
+    }
+
+    .compare-table th {
+      background: var(--card-bg);
+      padding: 14px 20px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .compare-table th:first-child { text-align: left; }
+
+    .compare-table th.highlight { color: var(--primary); }
+
+    .compare-table td {
+      padding: 14px 20px;
+      font-size: 0.88rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .compare-table td:first-child {
+      text-align: left;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .compare-table .check { color: #4CAF50; font-size: 1.1rem; }
+    .compare-table .cross { color: #ef5350; font-size: 1.1rem; }
+    .compare-table .price-cell { color: var(--white); font-weight: 600; font-family: 'Oswald', sans-serif; font-size: 1rem; }
+
+    /* booking CTA */
+    .booking-cta {
+      background: var(--gradient);
+      border-radius: 16px;
+      padding: 48px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .booking-cta h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .booking-cta p {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 28px;
+      font-size: 0.9rem;
+    }
+
+    .booking-cta .btn {
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .benefit-cards { grid-template-columns: 1fr 1fr; }
+      .booking-cta { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">IDS</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">トップ</a></li>
+    <li><a href="studio.html">スタジオ設備</a></li>
+    <li><a href="pricing.html">料金＆予約</a></li>
+    <li><a href="member.html" class="active">メンバー用</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="https://motohirosano.github.io/ids-booking/" class="nav-cta" target="_blank">今すぐ予約</a></li>
+  </ul>
+  <div class="nav-toggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="section-label">FOR MEMBERS</div>
+  <h1 class="section-title">メンバー用ページ</h1>
+  <p class="section-desc">メンバーはお得な料金と個人利用（シェア）をご利用いただけます。</p>
+</div>
+
+<section>
+  <div class="member-hero-note">
+    <strong>メンバーとは？</strong><br>
+    IDSのメンバーは、予約システムログイン時に専用パスワードを入力することで、メンバー料金での予約や個人利用（シェア）の利用が可能になります。パスワードはお問い合わせください。
+  </div>
+
+  <!-- メリット -->
+  <div class="section-label">MEMBER BENEFITS</div>
+  <h2 class="section-title" style="margin-bottom: 32px;">メンバー特典</h2>
+  <div class="benefit-cards">
+    <div class="benefit-card">
+      <div class="icon">💰</div>
+      <h3>お得なメンバー料金</h3>
+      <p>レンタル料金が一般料金より割安。定期利用の方に特におすすめです。</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">🤝</div>
+      <h3>個人利用（シェア）</h3>
+      <p>A Studioを他の利用者とシェアして¥500/2hから使えます。一人練習に最適。</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">🌙</div>
+      <h3>深夜料金の優遇</h3>
+      <p>深夜（0〜6時）もお得なメンバー深夜料金でご利用いただけます。</p>
+    </div>
+  </div>
+
+  <!-- 一般vs メンバー比較 -->
+  <div class="section-label">COMPARISON</div>
+  <h2 class="section-title" style="margin-bottom: 32px;">一般 vs メンバー 料金比較</h2>
+
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>利用タイプ</th>
+        <th>一般</th>
+        <th class="highlight">メンバー</th>
+        <th class="highlight">メンバー特典</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>個人利用（シェア）A Studio</td>
+        <td><span class="cross">✗</span> 利用不可</td>
+        <td><span class="price-cell">¥500 /2h</span></td>
+        <td>メンバー限定</td>
+      </tr>
+      <tr>
+        <td>レンタル A Studio</td>
+        <td><span class="price-cell">¥3,000 /2h</span></td>
+        <td><span class="price-cell">¥2,000 /2h</span></td>
+        <td>¥1,000 お得</td>
+      </tr>
+      <tr>
+        <td>レンタル B Studio</td>
+        <td><span class="price-cell">¥4,000 /2h</span></td>
+        <td><span class="price-cell">¥3,000 /2h</span></td>
+        <td>¥1,000 お得</td>
+      </tr>
+      <tr>
+        <td>深夜 A Studio（/h）</td>
+        <td><span class="price-cell">¥850 /h</span></td>
+        <td><span class="price-cell">¥500 /h</span></td>
+        <td>¥350 お得</td>
+      </tr>
+      <tr>
+        <td>深夜 B Studio（/h）</td>
+        <td><span class="price-cell">¥1,000 /h</span></td>
+        <td><span class="price-cell">¥700 /h</span></td>
+        <td>¥300 お得</td>
+      </tr>
+      <tr>
+        <td>A+B 全面拡張</td>
+        <td>要相談</td>
+        <td><span class="price-cell">¥4,000 /2h</span></td>
+        <td>メンバー料金設定あり</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- 予約CTA -->
+  <div class="booking-cta">
+    <h2>メンバーとして予約する</h2>
+    <p>予約カレンダーの「メンバーログイン」からパスワードを入力してお得な料金でご予約ください。</p>
+    <a href="https://motohirosano.github.io/ids-booking/" class="btn" target="_blank">予約カレンダーを開く</a>
+  </div>
+
+  <div style="margin-top: 40px; text-align:center;">
+    <p style="color: var(--text-muted); font-size: 0.85rem;">
+      メンバーパスワードをお持ちでない方は<a href="contact.html" style="color: var(--primary);">お問い合わせ</a>ください。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">IDS</div>
+        <div class="footer-tagline">Inohana Dance Studio</div>
+        <div class="footer-contact">
+          <p>
+            〒260-0013 千葉市中央区中央3-3-9 MF9ビル B1<br>
+            TEL: 080-8285-2342<br>
+            Email: inohanadancestudio@gmail.com
+          </p>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/inohanadancestudio/" target="_blank">IG</a>
+          <a href="https://www.youtube.com/@IDC-eventmovie/videos" target="_blank">YT</a>
+          <a href="https://lin.ee/RHJMw89" target="_blank">LN</a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="studio.html">スタジオ設備</a></li>
+          <li><a href="pricing.html">料金＆予約</a></li>
+          <li><a href="member.html">メンバー用</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>BOOKING</h4>
+        <ul>
+          <li><a href="https://motohirosano.github.io/ids-booking/" target="_blank">予約カレンダー</a></li>
+          <li><a href="pricing.html">料金表</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Inohana Dance Studio. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+</script>
+</body>
+</html>
