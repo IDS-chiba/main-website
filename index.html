@@ -146,14 +146,16 @@
 
 <!-- ナビ -->
 <nav>
-  <a href="index.html" class="nav-logo">IDS</a>
+  <a href="index.html" class="nav-logo">
+    <img src="images/ids-logo.png" alt="IDS - Inohana Dance Studio" onerror="this.onerror=null;this.src='images/ids-logo.svg';">
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html" class="active">トップ</a></li>
     <li><a href="studio.html">スタジオ設備</a></li>
     <li><a href="pricing.html">料金＆予約</a></li>
     <li><a href="member.html">メンバー用</a></li>
     <li><a href="contact.html">お問い合わせ</a></li>
-    <li><a href="https://motohirosano.github.io/ids-booking/" class="nav-cta" target="_blank">今すぐ予約</a></li>
+    <li><a href="https://ids-chiba.github.io/ids-booking/" class="nav-cta" target="_blank">今すぐ予約</a></li>
   </ul>
   <div class="nav-toggle" onclick="toggleNav()" id="navToggle">
     <span></span><span></span><span></span>
@@ -165,15 +167,17 @@
   <div class="hero-bg"></div>
   <div class="hero-content">
     <div class="hero-badge">千葉市中央区 ／ 24時間営業</div>
-    <h1>INOHANA<br>DANCE STUDIO</h1>
-    <h2>スタジオ・ステージ完備の多目的スペース</h2>
+    <div class="hero-logo">
+      <img src="images/ids-logo.png" alt="IDS - Inohana Dance Studio" onerror="this.onerror=null;this.src='images/ids-logo.svg';">
+    </div>
+    <h2>Inohana Dance Studio ／ 多目的スペース</h2>
     <p>
       会員登録不要ですぐにご利用いただけます。<br>
       スタジオ2つとステージを併設、鏡・スピーカー設置済み。<br>
       個人練習から本格イベントまで対応できます。
     </p>
     <div class="hero-buttons">
-      <a href="https://motohirosano.github.io/ids-booking/" class="btn btn-primary" target="_blank">予約カレンダーを見る</a>
+      <a href="https://ids-chiba.github.io/ids-booking/" class="btn btn-primary" target="_blank">予約カレンダーを見る</a>
       <a href="studio.html" class="btn btn-outline">スタジオを詳しく見る</a>
     </div>
   </div>
@@ -200,6 +204,35 @@
     </div>
   </div>
 </div>
+
+<!-- スタジオプレビュー -->
+<section>
+  <div class="section-label">OUR STUDIOS</div>
+  <h2 class="section-title">2つのスタジオ</h2>
+  <p class="section-desc">
+    照明・音響・鏡を完備。A・B各スタジオは単独利用はもちろん、連結して大規模イベントにも対応できます。
+  </p>
+  <div class="studio-preview">
+    <a href="studio.html" class="preview-card">
+      <img src="images/a-studio/a-red.jpg" alt="A Studio" loading="lazy">
+      <div class="preview-overlay">
+        <div class="label">STUDIO A</div>
+        <h3>A Studio</h3>
+        <p>個人利用（シェア）／レンタル対応</p>
+      </div>
+    </a>
+    <a href="studio.html" class="preview-card">
+      <img src="images/b-studio/b-green.jpg" alt="B Studio" loading="lazy">
+      <div class="preview-overlay">
+        <div class="label">STUDIO B</div>
+        <h3>B Studio</h3>
+        <p>レンタル（貸切）専用</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<hr class="divider">
 
 <!-- 使用例 -->
 <section>
@@ -307,7 +340,9 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <div class="footer-brand">IDS</div>
+        <div class="footer-brand">
+          <img src="images/ids-logo.png" alt="IDS - Inohana Dance Studio" onerror="this.onerror=null;this.src='images/ids-logo.svg';">
+        </div>
         <div class="footer-tagline">Inohana Dance Studio</div>
         <div class="footer-contact">
           <p>
@@ -336,7 +371,7 @@
       <div class="footer-nav">
         <h4>BOOKING</h4>
         <ul>
-          <li><a href="https://motohirosano.github.io/ids-booking/" target="_blank">予約カレンダー</a></li>
+          <li><a href="https://ids-chiba.github.io/ids-booking/" target="_blank">予約カレンダー</a></li>
           <li><a href="pricing.html">料金表</a></li>
         </ul>
       </div>

@@ -173,14 +173,16 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">IDS</a>
+  <a href="index.html" class="nav-logo">
+    <img src="images/ids-logo.png" alt="IDS - Inohana Dance Studio" onerror="this.onerror=null;this.src='images/ids-logo.svg';">
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">トップ</a></li>
     <li><a href="studio.html" class="active">スタジオ設備</a></li>
     <li><a href="pricing.html">料金＆予約</a></li>
     <li><a href="member.html">メンバー用</a></li>
     <li><a href="contact.html">お問い合わせ</a></li>
-    <li><a href="https://motohirosano.github.io/ids-booking/" class="nav-cta" target="_blank">今すぐ予約</a></li>
+    <li><a href="https://ids-chiba.github.io/ids-booking/" class="nav-cta" target="_blank">今すぐ予約</a></li>
   </ul>
   <div class="nav-toggle" onclick="toggleNav()">
     <span></span><span></span><span></span>
@@ -204,9 +206,22 @@
         <p>個人利用（シェア）・レンタル両対応</p>
       </div>
       <div class="studio-card-body">
-        <div class="photo-placeholder">
-          <span>📷</span>
-          <p>写真をここに追加できます</p>
+        <div class="photo-gallery">
+          <div class="gallery-item wide" onclick="openLightbox('images/a-studio/a-red.jpg')">
+            <img src="images/a-studio/a-red.jpg" alt="A Studio - Red" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/a-studio/a-green.jpg')">
+            <img src="images/a-studio/a-green.jpg" alt="A Studio - Green" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/a-studio/a-blue.jpg')">
+            <img src="images/a-studio/a-blue.jpg" alt="A Studio - Blue" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/a-studio/a-white.jpg')">
+            <img src="images/a-studio/a-white.jpg" alt="A Studio - White" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/a-studio/a-red2.jpg')">
+            <img src="images/a-studio/a-red2.jpg" alt="A Studio - Red 2" loading="lazy">
+          </div>
         </div>
         <ul class="equip-list">
           <li>全面鏡張り</li>
@@ -232,9 +247,16 @@
         <p>レンタル（貸切）専用スタジオ</p>
       </div>
       <div class="studio-card-body">
-        <div class="photo-placeholder">
-          <span>📷</span>
-          <p>写真をここに追加できます</p>
+        <div class="photo-gallery">
+          <div class="gallery-item wide" onclick="openLightbox('images/b-studio/b-green.jpg')">
+            <img src="images/b-studio/b-green.jpg" alt="B Studio - Green" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/b-studio/b-red.jpg')">
+            <img src="images/b-studio/b-red.jpg" alt="B Studio - Red" loading="lazy">
+          </div>
+          <div class="gallery-item" onclick="openLightbox('images/b-studio/c-to-b-1.jpg')">
+            <img src="images/b-studio/c-to-b-1.jpg" alt="B Studio - 連結時の様子" loading="lazy">
+          </div>
         </div>
         <ul class="equip-list">
           <li>全面鏡張り</li>
@@ -252,18 +274,26 @@
     </div>
   </div>
 
-  <!-- ステージ -->
+  <!-- ステージ／連結 -->
   <div class="stage-section">
-    <h2>🎤 ステージ</h2>
-    <div class="stage-grid">
-      <div class="photo-placeholder">
-        <span>📷</span>
-        <p>ステージ写真をここに追加できます</p>
+    <h2>🎤 ステージ／A+B連結時の様子</h2>
+    <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.9; margin-bottom: 24px;">
+      A Studio・B Studioをつなげることで、大人数でのパーティーやライブイベントにも対応できます。<br>
+      音響・照明・ケータリング等については事前にご相談ください。DJ機器やマイクのレンタルも可能です（要事前相談）。
+    </p>
+    <div class="stage-photo-row">
+      <div class="gallery-item" onclick="openLightbox('images/b-studio/b-to-c-1.jpg')">
+        <img src="images/b-studio/b-to-c-1.jpg" alt="A+B連結時の様子 1" loading="lazy">
       </div>
-      <p>
-        A Studio・B Studioに併設のステージスペース。スタジオをつなげることで大人数でのパーティーやライブイベントにも対応できます。<br><br>
-        音響・照明・ケータリング等については事前にご相談ください。DJ機器やマイクのレンタルも可能です（要事前相談）。
-      </p>
+      <div class="gallery-item" onclick="openLightbox('images/b-studio/b-to-c-2.jpg')">
+        <img src="images/b-studio/b-to-c-2.jpg" alt="A+B連結時の様子 2" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/b-studio/b-to-c-3.jpg')">
+        <img src="images/b-studio/b-to-c-3.jpg" alt="A+B連結時の様子 3" loading="lazy">
+      </div>
+      <div class="gallery-item" onclick="openLightbox('images/a-studio/a-white2.jpg')">
+        <img src="images/a-studio/a-white2.jpg" alt="A Studio - White 2" loading="lazy">
+      </div>
     </div>
   </div>
 
@@ -297,7 +327,9 @@
   <div class="footer-inner">
     <div class="footer-top">
       <div>
-        <div class="footer-brand">IDS</div>
+        <div class="footer-brand">
+          <img src="images/ids-logo.png" alt="IDS - Inohana Dance Studio" onerror="this.onerror=null;this.src='images/ids-logo.svg';">
+        </div>
         <div class="footer-tagline">Inohana Dance Studio</div>
         <div class="footer-contact">
           <p>
@@ -325,7 +357,7 @@
       <div class="footer-nav">
         <h4>BOOKING</h4>
         <ul>
-          <li><a href="https://motohirosano.github.io/ids-booking/" target="_blank">予約カレンダー</a></li>
+          <li><a href="https://ids-chiba.github.io/ids-booking/" target="_blank">予約カレンダー</a></li>
           <li><a href="pricing.html">料金表</a></li>
         </ul>
       </div>
@@ -336,10 +368,28 @@
   </div>
 </footer>
 
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="lightbox-close" onclick="closeLightbox(event)">×</div>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
 <script>
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
   }
+  function openLightbox(src) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightboxImg').src = src;
+    lb.classList.add('active');
+  }
+  function closeLightbox(e) {
+    if (e) e.stopPropagation();
+    document.getElementById('lightbox').classList.remove('active');
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 </body>
 </html>
