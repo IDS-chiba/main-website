@@ -308,117 +308,11 @@
 <div class="page-hero">
   <div class="section-label">PRICING & BOOKING</div>
   <h1 class="section-title">料金＆予約</h1>
-  <p class="section-desc">メンバー登録で個人利用（シェア）やお得なメンバー料金が利用できます。</p>
+  <p class="section-desc">A Studio・B Studio どちらも貸切でご利用いただけます。会員登録は不要です。</p>
 </div>
 
 <section>
-  <!-- タブ -->
-  <div class="tab-group">
-    <button class="tab-btn active" onclick="showTab('member')">メンバー料金</button>
-    <button class="tab-btn" onclick="showTab('general')">一般料金</button>
-  </div>
-
-  <!-- メンバー -->
-  <div class="tab-content active" id="tab-member">
-    <div class="pricing-cards">
-      <div class="pricing-card featured">
-        <div class="pricing-card-body">
-          <h3>個人利用（シェア）</h3>
-          <div class="subtitle">A Studio限定 ／ メンバー専用</div>
-          <div class="main-price">¥500<span> /2h</span></div>
-          <div class="add-price">以降 ¥250 /1時間ごと</div>
-          <ul>
-            <li>A Studioを他の利用者とシェア</li>
-            <li>最大5名まで同時利用可能</li>
-            <li>メンバー限定料金</li>
-          </ul>
-        </div>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-body">
-          <h3>レンタル A Studio</h3>
-          <div class="subtitle">貸切利用</div>
-          <div class="main-price">¥2,000<span> /2h</span></div>
-          <div class="add-price">以降 ¥1,000 /1時間ごと</div>
-          <ul>
-            <li>A Studioを完全貸切</li>
-            <li>人数制限なし</li>
-          </ul>
-        </div>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-card-body">
-          <h3>レンタル B Studio</h3>
-          <div class="subtitle">貸切利用</div>
-          <div class="main-price">¥3,000<span> /2h</span></div>
-          <div class="add-price">以降 ¥1,500 /1時間ごと</div>
-          <ul>
-            <li>B Studioを完全貸切</li>
-            <li>人数制限なし</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <table class="pricing-table">
-      <thead>
-        <tr>
-          <th>利用タイプ</th>
-          <th>スタジオ</th>
-          <th>基本料金（2h）</th>
-          <th>追加料金</th>
-          <th>備考</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>個人利用（シェア）<br><span class="tag-member">メンバー限定</span></td>
-          <td>A Studio</td>
-          <td><div class="price">¥500</div><div class="note">2時間</div></td>
-          <td>¥250 /h</td>
-          <td>最大5名まで同時利用可</td>
-        </tr>
-        <tr>
-          <td>レンタル（貸切）<br><span class="tag-member">メンバー</span></td>
-          <td>A Studio</td>
-          <td><div class="price">¥2,000</div><div class="note">2時間</div></td>
-          <td>¥1,000 /h</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>レンタル（貸切）<br><span class="tag-member">メンバー</span></td>
-          <td>B Studio</td>
-          <td><div class="price">¥3,000</div><div class="note">2時間</div></td>
-          <td>¥1,500 /h</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>A+B 全面拡張<br><span class="tag-member">メンバー</span></td>
-          <td>A + B Studio</td>
-          <td><div class="price">¥4,000</div><div class="note">2時間</div></td>
-          <td>¥2,000 /h</td>
-          <td>要事前相談</td>
-        </tr>
-        <tr>
-          <td>深夜レンタル<br><span class="tag-member">メンバー</span></td>
-          <td>A Studio</td>
-          <td><div class="price">¥500</div><div class="note">1時間</div></td>
-          <td>¥500 /h</td>
-          <td>0〜6時</td>
-        </tr>
-        <tr>
-          <td>深夜レンタル<br><span class="tag-member">メンバー</span></td>
-          <td>B Studio</td>
-          <td><div class="price">¥700</div><div class="note">1時間</div></td>
-          <td>¥700 /h</td>
-          <td>0〜6時</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- 一般 -->
-  <div class="tab-content" id="tab-general">
+  <div>
     <div class="pricing-cards">
       <div class="pricing-card">
         <div class="pricing-card-body">
@@ -598,13 +492,6 @@
 <script>
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
-  }
-
-  function showTab(tab) {
-    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-    document.getElementById('tab-' + tab).classList.add('active');
-    event.target.classList.add('active');
   }
 </script>
 </body>

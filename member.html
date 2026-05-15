@@ -122,6 +122,156 @@
       .benefit-cards { grid-template-columns: 1fr 1fr; }
       .booking-cta { padding: 32px 20px; }
     }
+
+    /* ===== ログインゲート ===== */
+    .login-gate {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 20px 40px;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(102,126,234,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(118,75,162,0.18) 0%, transparent 60%);
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .login-card .login-logo {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .login-card .login-logo img {
+      height: 56px;
+      width: auto;
+    }
+
+    .login-card h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-align: center;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .login-card .lead {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .login-form label {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-size: 1rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .login-form input[type="password"]:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .login-form .submit {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--gradient);
+      color: var(--white);
+      border: none;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .login-form .submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(102,126,234,0.45);
+    }
+
+    .login-error {
+      display: none;
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: rgba(239,83,80,0.12);
+      border: 1px solid rgba(239,83,80,0.35);
+      border-radius: 8px;
+      color: #ff8a85;
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    .login-error.show { display: block; }
+
+    .login-hint {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .login-hint a { color: var(--primary); text-decoration: none; }
+    .login-hint a:hover { text-decoration: underline; }
+
+    .member-logout-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 40px 0;
+      text-align: right;
+    }
+
+    .member-logout-bar button {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .member-logout-bar button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .login-card { padding: 32px 24px; }
+      .member-logout-bar { padding: 12px 20px 0; }
+    }
   </style>
 </head>
 <body>
@@ -140,6 +290,34 @@
     <span></span><span></span><span></span>
   </div>
 </nav>
+
+<!-- ログインゲート（未認証時のみ表示） -->
+<div class="login-gate" id="loginGate">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="images/ids-logo.png" alt="IDS" onerror="this.onerror=null;this.src='images/ids-logo.svg';">
+    </div>
+    <h2>MEMBER LOGIN</h2>
+    <p class="lead">メンバーパスワードを入力してください。</p>
+    <form class="login-form" onsubmit="return handleLogin(event)">
+      <label for="memberPass">パスワード</label>
+      <input type="password" id="memberPass" autocomplete="current-password" placeholder="••••" required autofocus>
+      <button type="submit" class="submit">ログイン</button>
+      <div class="login-error" id="loginError">パスワードが正しくありません。</div>
+    </form>
+    <div class="login-hint">
+      パスワードをお持ちでない方は<br>
+      <a href="contact.html">お問い合わせ</a>ください。
+    </div>
+  </div>
+</div>
+
+<!-- メンバー認証後コンテンツ（初期は非表示） -->
+<div id="memberContent" style="display:none;">
+
+<div class="member-logout-bar">
+  <button type="button" onclick="handleLogout()">ログアウト</button>
+</div>
 
 <div class="page-hero">
   <div class="section-label">FOR MEMBERS</div>
@@ -241,6 +419,8 @@
   </div>
 </section>
 
+</div><!-- /#memberContent -->
+
 <footer>
   <div class="footer-inner">
     <div class="footer-top">
@@ -288,6 +468,62 @@
   function toggleNav() {
     document.getElementById('navLinks').classList.toggle('open');
   }
+
+  // ===== メンバーログインゲート =====
+  // 簡易認証：パスワードは "ids"。sessionStorageに保存し、ブラウザを閉じるまで有効。
+  // ※ クライアント側で完結する簡易ゲートのため、強固な機密保護用途には適しません。
+  const MEMBER_AUTH_KEY = 'idsMemberAuth';
+  const MEMBER_PASSWORD = 'ids';
+
+  function isMemberAuthenticated() {
+    return sessionStorage.getItem(MEMBER_AUTH_KEY) === '1';
+  }
+
+  function showMemberContent() {
+    document.getElementById('loginGate').style.display = 'none';
+    document.getElementById('memberContent').style.display = '';
+  }
+
+  function showLoginGate() {
+    document.getElementById('loginGate').style.display = '';
+    document.getElementById('memberContent').style.display = 'none';
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const input = document.getElementById('memberPass');
+    const error = document.getElementById('loginError');
+    if (input.value === MEMBER_PASSWORD) {
+      sessionStorage.setItem(MEMBER_AUTH_KEY, '1');
+      error.classList.remove('show');
+      input.value = '';
+      showMemberContent();
+    } else {
+      error.classList.add('show');
+      input.value = '';
+      input.focus();
+    }
+    return false;
+  }
+
+  function handleLogout() {
+    sessionStorage.removeItem(MEMBER_AUTH_KEY);
+    showLoginGate();
+    // フォーカスを戻す
+    setTimeout(() => {
+      const inp = document.getElementById('memberPass');
+      if (inp) inp.focus();
+    }, 100);
+  }
+
+  // 初期化：認証済みなら本文を、未認証ならログイン画面を表示
+  document.addEventListener('DOMContentLoaded', function() {
+    if (isMemberAuthenticated()) {
+      showMemberContent();
+    } else {
+      showLoginGate();
+    }
+  });
 </script>
 </body>
 </html>
