@@ -281,10 +281,20 @@
     }
 
     @media (max-width: 768px) {
-      .pricing-cards { grid-template-columns: 1fr; }
-      .flow-steps { grid-template-columns: 1fr 1fr; }
+      .pricing-cards { grid-template-columns: 1fr; gap: 16px; margin-bottom: 32px; }
+      .pricing-card-body { padding: 24px 22px; }
+      .pricing-card .main-price { font-size: 2.4rem; }
+      .pricing-table { min-width: 560px; font-size: 0.85rem; }
+      .pricing-table th, .pricing-table td { padding: 12px 14px; }
+      .flow-steps { grid-template-columns: 1fr 1fr; gap: 16px; }
       .flow-step:nth-child(2)::after { display: none; }
       .flow-step:not(:last-child)::after { display: none; }
+      .notice-box { padding: 22px 18px; }
+    }
+    @media (max-width: 480px) {
+      .pricing-card .main-price { font-size: 2rem; }
+      .pricing-card-body { padding: 22px 18px; }
+      .pricing-table { font-size: 0.82rem; }
     }
   </style>
 </head>
@@ -352,6 +362,7 @@
       </div>
     </div>
 
+    <div class="table-wrap">
     <table class="pricing-table">
       <thead>
         <tr>
@@ -400,6 +411,7 @@
         </tr>
       </tbody>
     </table>
+    </div><!-- /.table-wrap -->
   </div>
 
   <hr class="divider" style="margin: 64px 0;">

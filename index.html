@@ -132,13 +132,21 @@
     }
 
     @media (max-width: 768px) {
-      .uses-grid { grid-template-columns: 1fr 1fr; }
-      .features-strip-inner { grid-template-columns: 1fr 1fr; padding: 40px 20px; }
-      .access-grid { grid-template-columns: 1fr; }
+      .uses-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .use-card { padding: 22px 18px; }
+      .use-card h3 { font-size: 0.95rem; }
+      .features-strip-inner { grid-template-columns: 1fr 1fr; padding: 36px 18px; gap: 20px; }
+      .feature-item .num { font-size: 2rem; }
+      .access-grid { grid-template-columns: 1fr; gap: 28px; }
+      .access-info p { font-size: 0.85rem; }
+      .map-frame iframe { height: 240px; }
+      .terms-box { padding: 22px 18px; }
+      .terms-box ol { padding-left: 18px; font-size: 0.82rem; }
     }
 
     @media (max-width: 480px) {
       .uses-grid { grid-template-columns: 1fr; }
+      .feature-item .num { font-size: 1.7rem; }
     }
   </style>
 </head>
