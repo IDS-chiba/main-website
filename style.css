@@ -372,8 +372,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -383,10 +383,22 @@ footer {
   transition: all 0.2s;
 }
 
+.footer-social a svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
 .footer-social a:hover {
   border-color: var(--primary);
   color: var(--primary);
+  transform: translateY(-1px);
 }
+
+/* SNSブランドカラーホバー */
+.footer-social a.sns-instagram:hover { color: #e1306c; border-color: #e1306c; }
+.footer-social a.sns-youtube:hover { color: #ff0000; border-color: #ff0000; }
+.footer-social a.sns-line:hover { color: #06c755; border-color: #06c755; }
 
 .footer-bottom {
   border-top: 1px solid var(--border);
