@@ -1,1 +1,547 @@
-null
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メンバー用 - IDS Inohana Dance Studio</title>
+  <meta name="description" content="IDSメンバー専用ページ。メンバー料金での予約、個人利用（シェア）の利用方法。">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .member-hero-note {
+      background: rgba(102,126,234,0.12);
+      border: 1px solid rgba(102,126,234,0.3);
+      border-radius: 12px;
+      padding: 20px 28px;
+      margin-bottom: 48px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .member-hero-note strong { color: var(--primary); }
+
+    .benefit-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 64px;
+    }
+
+    .benefit-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      transition: border-color 0.2s;
+    }
+
+    .benefit-card:hover { border-color: rgba(102,126,234,0.4); }
+
+    .benefit-card .icon { font-size: 2rem; margin-bottom: 14px; }
+
+    .benefit-card h3 {
+      font-size: 0.95rem;
+      color: var(--white);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* 比較表 */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 48px;
+    }
+
+    .compare-table th {
+      background: var(--card-bg);
+      padding: 14px 20px;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .compare-table th:first-child { text-align: left; }
+
+    .compare-table th.highlight { color: var(--primary); }
+
+    .compare-table td {
+      padding: 14px 20px;
+      font-size: 0.88rem;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    .compare-table td:first-child {
+      text-align: left;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .compare-table .check { color: #4CAF50; font-size: 1.1rem; }
+    .compare-table .cross { color: #ef5350; font-size: 1.1rem; }
+    .compare-table .price-cell { color: var(--white); font-weight: 600; font-family: 'Oswald', sans-serif; font-size: 1rem; }
+
+    /* booking CTA */
+    .booking-cta {
+      background: var(--gradient);
+      border-radius: 16px;
+      padding: 48px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .booking-cta h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .booking-cta p {
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 28px;
+      font-size: 0.9rem;
+    }
+
+    .booking-cta .btn {
+      background: var(--white);
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .benefit-cards { grid-template-columns: 1fr 1fr; gap: 14px; }
+      .benefit-card { padding: 22px 18px; }
+      .booking-cta { padding: 32px 20px; }
+      .booking-cta h2 { font-size: 1.5rem; }
+      .compare-table { min-width: 520px; font-size: 0.82rem; }
+      .compare-table th, .compare-table td { padding: 12px 14px; }
+      .member-hero-note { padding: 16px 18px; font-size: 0.84rem; }
+    }
+    @media (max-width: 480px) {
+      .benefit-cards { grid-template-columns: 1fr; }
+    }
+
+    /* ===== ログインゲート ===== */
+    .login-gate {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 20px 40px;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(102,126,234,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(118,75,162,0.18) 0%, transparent 60%);
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 32px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    .login-card .login-logo {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .login-card .login-logo img {
+      height: 56px;
+      width: auto;
+    }
+
+    .login-card h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.3rem;
+      color: var(--white);
+      text-align: center;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .login-card .lead {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    .login-form label {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .login-form input[type="password"] {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--white);
+      font-size: 1rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .login-form input[type="password"]:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: rgba(255,255,255,0.06);
+    }
+
+    .login-form .submit {
+      width: 100%;
+      padding: 14px 24px;
+      background: var(--gradient);
+      color: var(--white);
+      border: none;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+
+    .login-form .submit:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 22px rgba(102,126,234,0.45);
+    }
+
+    .login-error {
+      display: none;
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: rgba(239,83,80,0.12);
+      border: 1px solid rgba(239,83,80,0.35);
+      border-radius: 8px;
+      color: #ff8a85;
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    .login-error.show { display: block; }
+
+    .login-hint {
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    .login-hint a { color: var(--primary); text-decoration: none; }
+    .login-hint a:hover { text-decoration: underline; }
+
+    .member-logout-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 40px 0;
+      text-align: right;
+    }
+
+    .member-logout-bar button {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .member-logout-bar button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    @media (max-width: 768px) {
+      .login-card { padding: 32px 24px; }
+      .member-logout-bar { padding: 12px 20px 0; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><img src="images/ids-logo.png" alt="IDS - Inohana Dance Studio" onerror="this.onerror=null;this.src=&apos;images/ids-logo.svg&apos;;"></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">トップ</a></li>
+    <li><a href="studio.html">スタジオ設備</a></li>
+    <li><a href="pricing.html">料金＆予約</a></li>
+    <li><a href="member.html" class="active">メンバー用</a></li>
+    <li><a href="contact.html">お問い合わせ</a></li>
+    <li><a href="https://ids-chiba.github.io/ids-booking/" class="nav-cta" target="_blank">今すぐ予約</a></li>
+  </ul>
+  <div class="nav-toggle" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ログインゲート（未認証時のみ表示） -->
+<div class="login-gate" id="loginGate">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="images/ids-logo.png" alt="IDS" onerror="this.onerror=null;this.src='images/ids-logo.svg';">
+    </div>
+    <h2>MEMBER LOGIN</h2>
+    <p class="lead">メンバーパスワードを入力してください。</p>
+    <form class="login-form" onsubmit="return handleLogin(event)">
+      <label for="memberPass">パスワード</label>
+      <input type="password" id="memberPass" autocomplete="current-password" placeholder="••••" required autofocus>
+      <button type="submit" class="submit">ログイン</button>
+      <div class="login-error" id="loginError">パスワードが正しくありません。</div>
+    </form>
+    <div class="login-hint">
+      パスワードをお持ちでない方は<br>
+      <a href="contact.html">お問い合わせ</a>ください。
+    </div>
+  </div>
+</div>
+
+<!-- メンバー認証後コンテンツ（初期は非表示） -->
+<div id="memberContent" style="display:none;">
+
+<div class="member-logout-bar">
+  <button type="button" onclick="handleLogout()">ログアウト</button>
+</div>
+
+<div class="page-hero">
+  <div class="section-label">FOR MEMBERS</div>
+  <h1 class="section-title">メンバー用ページ</h1>
+  <p class="section-desc">メンバーはお得な料金と個人利用（シェア）をご利用いただけます。</p>
+</div>
+
+<section>
+  <div class="member-hero-note">
+    <strong>メンバーとは？</strong><br>
+    IDSのメンバーは、予約システムログイン時に専用パスワードを入力することで、メンバー料金での予約や個人利用（シェア）の利用が可能になります。パスワードはお問い合わせください。
+  </div>
+
+  <!-- メリット -->
+  <div class="section-label">MEMBER BENEFITS</div>
+  <h2 class="section-title" style="margin-bottom: 32px;">メンバー特典</h2>
+  <div class="benefit-cards">
+    <div class="benefit-card">
+      <div class="icon">💰</div>
+      <h3>お得なメンバー料金</h3>
+      <p>レンタル料金が一般料金より割安。定期利用の方に特におすすめです。</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">🤝</div>
+      <h3>個人利用（シェア）</h3>
+      <p>A Studioを他の利用者とシェアして¥500/2hから使えます。一人練習に最適。</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">🌙</div>
+      <h3>深夜料金の優遇</h3>
+      <p>深夜（0〜6時）もお得なメンバー深夜料金でご利用いただけます。</p>
+    </div>
+  </div>
+
+  <!-- 一般vs メンバー比較 -->
+  <div class="section-label">COMPARISON</div>
+  <h2 class="section-title" style="margin-bottom: 32px;">一般 vs メンバー 料金比較</h2>
+
+  <div class="table-wrap">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>利用タイプ</th>
+        <th>一般</th>
+        <th class="highlight">メンバー</th>
+        <th class="highlight">メンバー特典</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>個人利用（シェア）A Studio</td>
+        <td><span class="cross">✗</span> 利用不可</td>
+        <td><span class="price-cell">¥500 /2h</span></td>
+        <td>メンバー限定</td>
+      </tr>
+      <tr>
+        <td>レンタル A Studio</td>
+        <td><span class="price-cell">¥3,000 /2h</span></td>
+        <td><span class="price-cell">¥2,000 /2h</span></td>
+        <td>¥1,000 お得</td>
+      </tr>
+      <tr>
+        <td>レンタル B Studio</td>
+        <td><span class="price-cell">¥4,000 /2h</span></td>
+        <td><span class="price-cell">¥3,000 /2h</span></td>
+        <td>¥1,000 お得</td>
+      </tr>
+      <tr>
+        <td>深夜 A Studio（/h）</td>
+        <td><span class="price-cell">¥850 /h</span></td>
+        <td><span class="price-cell">¥500 /h</span></td>
+        <td>¥350 お得</td>
+      </tr>
+      <tr>
+        <td>深夜 B Studio（/h）</td>
+        <td><span class="price-cell">¥1,000 /h</span></td>
+        <td><span class="price-cell">¥700 /h</span></td>
+        <td>¥300 お得</td>
+      </tr>
+      <tr>
+        <td>A+B 全面拡張</td>
+        <td><span class="price-cell">¥7,000 /2h</span></td>
+        <td><span class="price-cell">¥4,000 /2h</span></td>
+        <td>メンバー料金設定あり</td>
+      </tr>
+    </tbody>
+  </table>
+  </div><!-- /.table-wrap -->
+
+  <!-- 予約CTA -->
+  <div class="booking-cta">
+    <h2>メンバーとして予約する</h2>
+    <p>予約カレンダーの「メンバーログイン」からパスワードを入力してお得な料金でご予約ください。</p>
+    <a href="https://ids-chiba.github.io/ids-booking/" class="btn" target="_blank">予約カレンダーを開く</a>
+  </div>
+
+  <div style="margin-top: 40px; text-align:center;">
+    <p style="color: var(--text-muted); font-size: 0.85rem;">
+      メンバーパスワードをお持ちでない方は<a href="contact.html" style="color: var(--primary);">お問い合わせ</a>ください。
+    </p>
+  </div>
+</section>
+
+</div><!-- /#memberContent -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand"><img src="images/ids-logo.png" alt="IDS - Inohana Dance Studio" onerror="this.onerror=null;this.src=&apos;images/ids-logo.svg&apos;;"></div>
+        <div class="footer-tagline">Inohana Dance Studio</div>
+        <div class="footer-contact">
+          <p>
+            〒260-0013 千葉市中央区中央3-3-9 MF9ビル B1<br>
+            TEL: 080-8285-2342<br>
+            Email: inohanadancestudio@gmail.com
+          </p>
+        </div>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/inohanadancestudio/" target="_blank" rel="noopener" class="sns-instagram" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+          <a href="https://www.youtube.com/@IDC-eventmovie/videos" target="_blank" rel="noopener" class="sns-youtube" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.582 6.186a2.506 2.506 0 0 0-1.768-1.768C18.254 4 12 4 12 4s-6.254 0-7.814.418A2.506 2.506 0 0 0 2.418 6.186C2 7.746 2 12 2 12s0 4.254.418 5.814a2.506 2.506 0 0 0 1.768 1.768C5.746 20 12 20 12 20s6.254 0 7.814-.418a2.506 2.506 0 0 0 1.768-1.768C22 16.254 22 12 22 12s0-4.254-.418-5.814zM10 15.464V8.536L16 12l-6 3.464z"/></svg></a>
+          <a href="https://lin.ee/RHJMw89" target="_blank" rel="noopener" class="sns-line" aria-label="LINE" title="LINE"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <h4>MENU</h4>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="studio.html">スタジオ設備</a></li>
+          <li><a href="pricing.html">料金＆予約</a></li>
+          <li><a href="member.html">メンバー用</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>BOOKING</h4>
+        <ul>
+          <li><a href="https://ids-chiba.github.io/ids-booking/" target="_blank">予約カレンダー</a></li>
+          <li><a href="pricing.html">料金表</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>POLICY</h4>
+        <ul>
+          <li><a href="tokushoho.html">特定商取引法に基づく表記</a></li>
+          <li><a href="cancel-policy.html">キャンセルポリシー</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Inohana Dance Studio. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // ===== メンバーログインゲート =====
+  // 簡易認証：パスワードは "ids"。sessionStorageに保存し、ブラウザを閉じるまで有効。
+  // ※ クライアント側で完結する簡易ゲートのため、強固な機密保護用途には適しません。
+  const MEMBER_AUTH_KEY = 'idsMemberAuth';
+  const MEMBER_PASSWORD = 'ids';
+
+  function isMemberAuthenticated() {
+    return sessionStorage.getItem(MEMBER_AUTH_KEY) === '1';
+  }
+
+  function showMemberContent() {
+    document.getElementById('loginGate').style.display = 'none';
+    document.getElementById('memberContent').style.display = '';
+  }
+
+  function showLoginGate() {
+    document.getElementById('loginGate').style.display = '';
+    document.getElementById('memberContent').style.display = 'none';
+  }
+
+  function handleLogin(e) {
+    e.preventDefault();
+    const input = document.getElementById('memberPass');
+    const error = document.getElementById('loginError');
+    if (input.value === MEMBER_PASSWORD) {
+      sessionStorage.setItem(MEMBER_AUTH_KEY, '1');
+      error.classList.remove('show');
+      input.value = '';
+      showMemberContent();
+    } else {
+      error.classList.add('show');
+      input.value = '';
+      input.focus();
+    }
+    return false;
+  }
+
+  function handleLogout() {
+    sessionStorage.removeItem(MEMBER_AUTH_KEY);
+    showLoginGate();
+    // フォーカスを戻す
+    setTimeout(() => {
+      const inp = document.getElementById('memberPass');
+      if (inp) inp.focus();
+    }, 100);
+  }
+
+  // 初期化：認証済みなら本文を、未認証ならログイン画面を表示
+  document.addEventListener('DOMContentLoaded', function() {
+    if (isMemberAuthenticated()) {
+      showMemberContent();
+    } else {
+      showLoginGate();
+    }
+  });
+</script>
+</body>
+</html>
