@@ -173,6 +173,23 @@
     }
     .howto-card { display: flex; flex-direction: column; align-items: center; }
     .howto-card .btn { margin-top: auto; }
+    .howto-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      border: 1px solid var(--primary);
+      color: #aab6ff;
+      background: rgba(102,126,234,0.12);
+    }
+    .howto-badge.common {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(245,166,35,0.12);
+    }
 
     @media (max-width: 768px) {
       .studio-cards { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
@@ -344,13 +361,15 @@
   <div class="howto-pair">
     <div class="rental-item howto-card">
       <div class="icon">🔊</div>
-      <h3 style="margin-bottom: 12px;">YAMAHA STAGEPAS 1K mkⅡ の接続手順</h3>
-      <p style="margin-bottom: 20px;">動画で接続方法をご確認いただけます。</p>
+      <span class="howto-badge common">A Studio・B Studio 共通</span>
+      <h3 style="margin-bottom: 12px;">Bluetooth 接続の手順</h3>
+      <p style="margin-bottom: 20px;">どちらのスタジオも同じ方法でつなげます。<br>スピーカー：YAMAHA STAGEPAS 1K mkⅡ</p>
       <a href="https://youtu.be/17WrXXGSYro?si=CmxEUSPycUu8AeL5" target="_blank" rel="noopener" class="btn btn-primary">▶ 動画を見る</a>
     </div>
     <div class="rental-item howto-card">
       <div class="icon">🔌</div>
-      <h3 style="margin-bottom: 12px;">B Studio 有線接続の手順</h3>
+      <span class="howto-badge">B Studio</span>
+      <h3 style="margin-bottom: 12px;">有線接続の手順</h3>
       <p style="margin-bottom: 20px;">Type-C 端子のあるスマートフォン・PCをミキサー経由でつなぐ方法です。接続前に、ミキサー一番右のフェーダーをゼロにしてください。</p>
       <a href="https://youtube.com/shorts/U__7WmM34ss" target="_blank" rel="noopener" class="btn btn-primary">▶ 動画を見る</a>
     </div>
