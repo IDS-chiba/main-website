@@ -296,6 +296,26 @@
       .pricing-card-body { padding: 22px 18px; }
       .pricing-table { font-size: 0.82rem; }
     }
+    /* 1人用プラン（スペースマーケット） */
+    .solo-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+    .solo-card h3 { font-size: 1.05rem; color: var(--white); margin-bottom: 6px; }
+    .solo-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.8; }
+    .solo-card .solo-note { font-size: 0.75rem; }
+    .solo-links { display: flex; gap: 12px; flex-shrink: 0; flex-wrap: wrap; }
+    @media (max-width: 768px) {
+      .solo-card { flex-direction: column; align-items: stretch; padding: 22px 20px; margin-bottom: 32px; }
+      .solo-links .btn { flex: 1; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -360,6 +380,19 @@
             <li>ステージ利用可能</li>
           </ul>
         </div>
+      </div>
+    </div>
+
+    <!-- 1人用プラン（スペースマーケット） -->
+    <div class="solo-card">
+      <div>
+        <h3>👤 1人でのご利用</h3>
+        <p>1人用プランは、スペースマーケットからご予約いただけます。</p>
+        <p class="solo-note">※料金・キャンセル規定はスペースマーケットの表示に従います。</p>
+      </div>
+      <div class="solo-links">
+        <a href="https://www.spacemarket.com/p/PxlDXM3EmgoEndPS" target="_blank" rel="noopener" class="btn btn-primary">A Studio を予約</a>
+        <a href="https://www.spacemarket.com/p/ztsZbbqdhi-SYcT5" target="_blank" rel="noopener" class="btn btn-primary">B Studio を予約</a>
       </div>
     </div>
 
