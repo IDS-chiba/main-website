@@ -190,6 +190,7 @@
       color: var(--accent);
       background: rgba(245,166,35,0.12);
     }
+    .howto-pair.trio { grid-template-columns: repeat(3, minmax(0, 380px)); }
 
     @media (max-width: 768px) {
       .studio-cards { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
@@ -199,6 +200,7 @@
       .stage-grid { grid-template-columns: 1fr; }
       .rental-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .howto-pair { grid-template-columns: 1fr; gap: 16px; margin-bottom: 48px; }
+      .howto-pair.trio { grid-template-columns: 1fr; }
       .rental-item { padding: 20px 16px; }
       .stage-section { padding: 24px 20px; }
       .equip-list li { font-size: 0.85rem; }
@@ -358,7 +360,7 @@
   <!-- スピーカー接続方法 -->
   <div class="section-label">HOW TO</div>
   <h2 class="section-title" style="margin-bottom:32px;">スピーカー接続方法</h2>
-  <div class="howto-pair">
+  <div class="howto-pair trio">
     <div class="rental-item howto-card">
       <div class="icon">🔊</div>
       <span class="howto-badge common">A Studio・B Studio 共通</span>
@@ -368,10 +370,35 @@
     </div>
     <div class="rental-item howto-card">
       <div class="icon">🔌</div>
+      <span class="howto-badge">A Studio</span>
+      <h3 style="margin-bottom: 12px;">有線接続の手順</h3>
+      <p style="margin-bottom: 20px;">スマートフォン・PCをケーブルでスピーカーにつなぐ方法です。手順は動画でご確認ください。</p>
+      <a href="https://youtube.com/shorts/u_QGWYWFQ8Y" target="_blank" rel="noopener" class="btn btn-primary">▶ 動画を見る</a>
+    </div>
+    <div class="rental-item howto-card">
+      <div class="icon">🔌</div>
       <span class="howto-badge">B Studio</span>
       <h3 style="margin-bottom: 12px;">有線接続の手順</h3>
       <p style="margin-bottom: 20px;">Type-C 端子のあるスマートフォン・PCをミキサー経由でつなぐ方法です。接続前に、ミキサー一番右のフェーダーをゼロにしてください。</p>
       <a href="https://youtube.com/shorts/ZdusZaWMiZ4" target="_blank" rel="noopener" class="btn btn-primary">▶ 動画を見る</a>
+    </div>
+  </div>
+
+  <h2 class="section-title" style="margin-bottom:32px;">LED照明の使い方</h2>
+  <div class="howto-pair">
+    <div class="rental-item howto-card">
+      <div class="icon">💡</div>
+      <span class="howto-badge">A Studio</span>
+      <h3 style="margin-bottom: 12px;">LED照明の使い方</h3>
+      <p style="margin-bottom: 20px;">A Studio の照明の操作方法を動画でご確認いただけます。</p>
+      <a href="https://youtube.com/shorts/TaRBWRWiUAQ" target="_blank" rel="noopener" class="btn btn-primary">▶ 動画を見る</a>
+    </div>
+    <div class="rental-item howto-card">
+      <div class="icon">💡</div>
+      <span class="howto-badge">B Studio</span>
+      <h3 style="margin-bottom: 12px;">LED照明の使い方</h3>
+      <p style="margin-bottom: 20px;">B Studio の照明の操作方法を動画でご確認いただけます。</p>
+      <a href="https://youtube.com/shorts/qIdLnylN_9s" target="_blank" rel="noopener" class="btn btn-primary">▶ 動画を見る</a>
     </div>
   </div>
 
