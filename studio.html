@@ -191,6 +191,13 @@
       background: rgba(245,166,35,0.12);
     }
     .howto-pair.trio { grid-template-columns: repeat(3, minmax(0, 380px)); }
+    /* 更衣室 */
+    .room-card { max-width: 1180px; margin: 0 auto 64px; }
+    .room-photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 4px 0 24px; }
+    .room-photo { margin: 0; cursor: pointer; }
+    .room-photo img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 8px; display: block; transition: opacity 0.2s; }
+    .room-photo:hover img { opacity: 0.85; }
+    .room-photo figcaption { font-size: 0.75rem; color: var(--text-muted); margin-top: 6px; }
 
     @media (max-width: 768px) {
       .studio-cards { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
@@ -201,6 +208,8 @@
       .rental-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
       .howto-pair { grid-template-columns: 1fr; gap: 16px; margin-bottom: 48px; }
       .howto-pair.trio { grid-template-columns: 1fr; }
+      .room-photos { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .room-card { margin-bottom: 48px; }
       .rental-item { padding: 20px 16px; }
       .stage-section { padding: 24px 20px; }
       .equip-list li { font-size: 0.85rem; }
@@ -373,6 +382,22 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- 更衣室 -->
+  <div class="section-label">CHANGING ROOM</div>
+  <h2 class="section-title" style="margin-bottom:32px;">更衣室</h2>
+  <div class="rental-item room-card">
+    <div class="icon">👕</div>
+    <h3 style="margin-bottom: 12px;">更衣室のご案内</h3>
+    <p style="margin-bottom: 20px;">お着替えには更衣室をご利用ください。通路の奥にある「CHANGING ROOM」と書かれたドアです。</p>
+    <div class="room-photos">
+      <figure class="room-photo" onclick="openLightbox('images/changing-room-1-corridor.jpg')"><img src="images/changing-room-1-corridor.jpg" alt="更衣室までの通路" loading="lazy"><figcaption>通路の奥にあります</figcaption></figure>
+      <figure class="room-photo" onclick="openLightbox('images/changing-room-2-door.jpg')"><img src="images/changing-room-2-door.jpg" alt="更衣室の入口（CHANGING ROOM）" loading="lazy"><figcaption>入口（CHANGING ROOM）</figcaption></figure>
+      <figure class="room-photo" onclick="openLightbox('images/changing-room-3-mirror.jpg')"><img src="images/changing-room-3-mirror.jpg" alt="更衣室の室内（鏡）" loading="lazy"><figcaption>室内（鏡）</figcaption></figure>
+      <figure class="room-photo" onclick="openLightbox('images/changing-room-4-hanger.jpg')"><img src="images/changing-room-4-hanger.jpg" alt="更衣室の室内（ハンガー・ベンチ）" loading="lazy"><figcaption>室内（ハンガー・ベンチ）</figcaption></figure>
+    </div>
+    <a href="https://youtube.com/shorts/fozQIDq5fa8" target="_blank" rel="noopener" class="btn btn-primary">▶ 場所を動画で見る</a>
   </div>
 
   <!-- スピーカー接続方法 -->
